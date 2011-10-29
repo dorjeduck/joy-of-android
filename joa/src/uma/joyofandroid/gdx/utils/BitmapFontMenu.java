@@ -19,11 +19,10 @@ package uma.joyofandroid.gdx.utils;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
-
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -33,11 +32,11 @@ public class BitmapFontMenu {
 		TOP_LEFT, CENTERED_LEFT, BOTTOM_LEFT, TOP_CENTERED, CENTERED, BOTTOM_CENTERED, TOP_RIGHT, CENTERED_RIGHT, BOTTOM_RIGHT
 	}
 
-	private BitmapFont font;
+	BitmapFont font;
 
-	private AnchorPosition anchorPosition;
-	private String menuString;
-	private Vector2 anchor;
+	AnchorPosition anchorPosition;
+	String menuString;
+	Vector2 anchor;
 
 	String[] menuStringLines;
 
@@ -123,12 +122,13 @@ public class BitmapFontMenu {
 					|| anchorPosition == AnchorPosition.CENTERED
 					|| anchorPosition == AnchorPosition.BOTTOM_CENTERED) {
 				xStartPos[i] = anchor.x
-						- font.getBounds(menuStringLines[i].replace("\"","")).width / 2;
+						- font.getBounds(menuStringLines[i].replace("\"", "")).width
+						/ 2;
 			} else if (anchorPosition == AnchorPosition.BOTTOM_RIGHT
 					|| anchorPosition == AnchorPosition.CENTERED_RIGHT
 					|| anchorPosition == AnchorPosition.TOP_RIGHT) {
 				xStartPos[i] = anchor.x
-						- font.getBounds(menuStringLines[i].replace("\"","")).width;
+						- font.getBounds(menuStringLines[i].replace("\"", "")).width;
 			}
 
 			TextBounds tb;
@@ -180,8 +180,6 @@ public class BitmapFontMenu {
 		for (Rectangle r : allRectangles) {
 
 			font.draw(batcher, allMenuPoints.get(i), r.x + xTouchAreaAlign, r.y);
-			// System.out
-			// .println(r.x + " - " + r.y + "-> " + allMenuPoints.get(i));
 			i++;
 		}
 
